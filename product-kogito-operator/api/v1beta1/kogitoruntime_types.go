@@ -17,7 +17,6 @@ limitations under the License.
 package v1beta1
 
 import (
-	"github.com/vaibhavjainwiz/kogito-operator/community-kogito-operator/core/api"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -26,26 +25,17 @@ import (
 
 // KogitoRuntimeSpec defines the desired state of KogitoRuntime
 type KogitoRuntimeSpec struct {
-	api.KogitoServiceSpec `json:",inline"`
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
 
-	// Annotates the pods managed by the operator with the required metadata for Istio to setup its sidecars, enabling the mesh. Defaults to false.
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors=true
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors.displayName="Enable Istio"
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors.x-descriptors="urn:alm:descriptor:com.tectonic.ui:booleanSwitch"
-	EnableIstio bool `json:"enableIstio,omitempty"`
-
-	// The name of the runtime used, either Quarkus or SpringBoot.
-	// Default value: quarkus
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors=true
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors.displayName="runtime"
-	// +operator-sdk:gen-csv:customresourcedefinitions.specDescriptors.x-descriptors="urn:alm:descriptor:com.tectonic.ui:label"
-	// +kubebuilder:validation:Enum=quarkus;springboot
-	Runtime api.RuntimeType `json:"runtime,omitempty"`
+	// Foo is an example field of KogitoRuntime. Edit KogitoRuntime_types.go to remove/update
+	Foo string `json:"foo,omitempty"`
 }
 
 // KogitoRuntimeStatus defines the observed state of KogitoRuntime
 type KogitoRuntimeStatus struct {
-	api.KogitoServiceStatus `json:",inline"`
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
 }
 
 // +kubebuilder:object:root=true

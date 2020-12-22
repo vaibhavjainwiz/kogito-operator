@@ -18,14 +18,14 @@ package controllers
 
 import (
 	"context"
-	"github.com/go-logr/logr"
 	"github.com/vaibhavjainwiz/kogito-operator/community-kogito-operator/core/kogitoruntime"
-	"github.com/vaibhavjainwiz/kogito-operator/community-kogito-operator/internal"
+	"github.com/vaibhavjainwiz/kogito-operator/product-kogito-operator/api/v1beta1"
+	"github.com/vaibhavjainwiz/kogito-operator/product-kogito-operator/internal"
+
+	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-
-	"github.com/vaibhavjainwiz/kogito-operator/community-kogito-operator/api/v1beta1"
 )
 
 // KogitoRuntimeReconciler reconciles a KogitoRuntime object
