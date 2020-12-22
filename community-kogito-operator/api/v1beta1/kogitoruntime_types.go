@@ -48,10 +48,10 @@ type KogitoRuntimeStatus struct {
 	api.KogitoServiceStatus `json:",inline"`
 }
 
-// +k8s:openapi-gen=true
 // +kubebuilder:object:root=true
-// +kubebuilder:subresource:status
 
+// +k8s:openapi-gen=true
+// +kubebuilder:subresource:status
 // KogitoRuntime is the Schema for the kogitoruntimes API
 type KogitoRuntime struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -61,6 +61,24 @@ type KogitoRuntime struct {
 	Status KogitoRuntimeStatus `json:"status,omitempty"`
 }
 
+// GetRuntime ...
+func (k *KogitoRuntimeSpec) GetRuntime() api.RuntimeType {
+	if len(k.Runtime) == 0 {
+		k.Runtime = api.QuarkusRuntimeType
+	}
+	return k.Runtime
+}
+
+// GetSpec ...
+func (k *KogitoRuntime) GetSpec() api.KogitoServiceSpecInterface {
+	return &k.Spec
+}
+
+// GetStatus ...
+func (k *KogitoRuntime) GetStatus() api.KogitoServiceStatusInterface {
+	return &k.Status
+}
+
 // +kubebuilder:object:root=true
 
 // KogitoRuntimeList contains a list of KogitoRuntime
@@ -68,6 +86,19 @@ type KogitoRuntimeList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []KogitoRuntime `json:"items"`
+}
+
+// GetItemsCount ...
+func (l *KogitoRuntimeList) GetItemsCount() int {
+	return len(l.Items)
+}
+
+// GetItemAt ...
+func (l *KogitoRuntimeList) GetItemAt(index int) api.KogitoService {
+	if len(l.Items) > index {
+		return api.KogitoService(&l.Items[index])
+	}
+	return nil
 }
 
 func init() {

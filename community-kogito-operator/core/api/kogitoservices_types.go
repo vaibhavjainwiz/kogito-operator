@@ -57,6 +57,8 @@ type KogitoServiceStatusInterface interface {
 	SetCloudEvents(cloudEvents KogitoCloudEventsStatus)
 }
 
+// +kubebuilder:object:root=true
+// +k8s:deepcopy-gen=package,register
 // KogitoServiceStatus is the basic structure for any Kogito Service status.
 type KogitoServiceStatus struct {
 	ConditionsMeta `json:",inline"`
@@ -159,6 +161,8 @@ type KogitoServiceSpecInterface interface {
 	SetProbes(probes KogitoProbe)
 }
 
+// +kubebuilder:object:root=true
+// +k8s:deepcopy-gen=package,register
 // KogitoServiceSpec is the basic structure for the Kogito Service specification.
 type KogitoServiceSpec struct {
 	// Number of replicas that the service will have deployed in the cluster.

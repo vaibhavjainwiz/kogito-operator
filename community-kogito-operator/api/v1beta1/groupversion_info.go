@@ -17,6 +17,7 @@ limitations under the License.
 // Package v1 contains API Schema definitions for the app v1 API group
 // +kubebuilder:object:generate=true
 // +groupName=app.vajain.com
+// +k8s:deepcopy-gen=package,register
 package v1beta1
 
 import (
