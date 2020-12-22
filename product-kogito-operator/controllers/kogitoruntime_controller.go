@@ -18,7 +18,6 @@ package controllers
 
 import (
 	"context"
-	"github.com/vaibhavjainwiz/kogito-operator/community-kogito-operator/core/kogitoruntime"
 	"github.com/vaibhavjainwiz/kogito-operator/product-kogito-operator/api/v1beta1"
 	"github.com/vaibhavjainwiz/kogito-operator/product-kogito-operator/internal"
 
@@ -49,16 +48,6 @@ func (r *KogitoRuntimeReconciler) Reconcile(req ctrl.Request) (result ctrl.Resul
 	}
 	if instance == nil {
 		log.Info("Instance not found", "KogitoRuntime", req.Name, "Namespace", req.Namespace)
-		return
-	}
-
-	// Step 2: Setup RBAC
-	rbacService := kogitoruntime.RBACService{
-		Log:    log,
-		Client: r.Client,
-	}
-	err = rbacService.SetupRBAC(req.Namespace)
-	if err != nil {
 		return
 	}
 

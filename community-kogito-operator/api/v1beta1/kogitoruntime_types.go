@@ -48,6 +48,7 @@ type KogitoRuntimeStatus struct {
 	api.KogitoServiceStatus `json:",inline"`
 }
 
+// +k8s:openapi-gen=true
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
 
