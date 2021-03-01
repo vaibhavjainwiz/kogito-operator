@@ -17,7 +17,7 @@ limitations under the License.
 // Package v1beta1 contains API Schema definitions for the app v1beta1 API group
 // +kubebuilder:object:generate=true
 // +groupName=app.vajain.com
-package v1beta1
+package v1
 
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
